@@ -55,12 +55,9 @@ node *search(node *root, int data){
 }
 
 node *insert(node *root, int data){
-    node *newnode = createnewnode(data);
-    
     if (!root)
     {
-        root = newnode;
-        return root;
+        return createnewnode(data);
     }   
     
     if (data > root->data)
@@ -101,11 +98,11 @@ node *delete(node *root, int data){
             free(root);
             return temp;
         }
-        else{
-            
-        }
+        node *succesor = getSuccesor(root->right);
+        root->data = succesor->data;
+        root->right = delete(root->right, succesor->data);
     }
-   
+    return root;
 }
 
 void inorder(node *root){
@@ -132,4 +129,8 @@ int main(){
     node *predecesor = getPredecessor(root->left);
     node *succesor = getSuccesor(root->right);
     printf("pre: %d, suc: %d\n", predecesor->data, succesor->data);
+
+    printf("\n\nDelete\n");
+    root = delete(root, 60);
+    inorder(root);
 }

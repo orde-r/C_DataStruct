@@ -106,13 +106,17 @@ node *delete(node *root, int value){
             return temp;
         }
 
-         //Punya 2 anak
+         //Punya 2 anak    
+         
+        //Succesor 
         node *temp = findMin(root->right); //Succ
-        //node *temp = findMax(root->left); //Pre
-
         root->value = temp->value;
-
-        root->right = delete(root->right, temp->value);
+        root->right = delete(root->right, temp->value); //Succ
+        
+        //Predecessor
+        // node *temp = findMax(root->left); //Pre
+        // root->value = temp->value;
+        // root->left = delete(root->left, temp->value); //Pre
     }
     return root;
 }
