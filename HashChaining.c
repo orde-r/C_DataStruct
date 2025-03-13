@@ -46,7 +46,7 @@ void insertNode(const char name[], int value){
 
 void removeNode(const char name[]){
     int key = hashFunction(name);
-    node *curr = hashTable[key], *prev;
+    node *curr = hashTable[key], *prev = NULL;
 
     while (curr && strcmp(curr->name, name) != 0)
     {
@@ -96,6 +96,7 @@ int searching(const char name[]){
 }
 
 int main(){
+   
     insertNode("Andy",0);
     insertNode("Bndy",11);
     insertNode("Candy",21);
