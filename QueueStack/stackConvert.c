@@ -165,7 +165,7 @@ void postfix(const char str[]){
 }
 
 int main(){
-    char str[] = "4+6*(5-2)/3";
+    char str[] = "(a+b)*(c/(d-e))+f^g";
     int size = strlen(str);
 
     prefix(str);
