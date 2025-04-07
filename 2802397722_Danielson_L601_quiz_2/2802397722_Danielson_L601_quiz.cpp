@@ -269,7 +269,6 @@ void test3X(){
 }
 
 
-
 /*
 Scan String
 Ambil huruf pertama simpan di char
