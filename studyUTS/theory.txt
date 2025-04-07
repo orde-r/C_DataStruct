@@ -1,0 +1,101 @@
+Hashing
+Cara Hashing di BinusMaya nigga ada 5 kata yan begitu
+
+1. Mid Square
+Kita kuadratkan trus ambil yang ditengah
+
+3121  87 406 41 406
+
+8 64 kita pilih depan atau belakang bebas
+
+2. Division
+z mod M
+Total Ascii % SIZE
+
+3. Folding
+Dipecah dan dijumlah
+34567
+34 56 7
+97
+
+4. Digit Extraction
+Choose the digit u want
+e.g
+12345
+We choose to extract first and third digit
+13
+
+5. Rotating Hash
+12345
+54321
+
+
+Collision Handling
+1. Open Addressing - Search for the next empty index 
+2. Chaining - Using Linked list if collapse
+
+
+
+
+
+Tree and Binary Tree
+
+Height = tinggi root; Hitung dari bawah (based  1)
+The tree with only root -> Height = 1
+
+Depth = kedalaman daun
+Hitung dari atas
+Depth of root = 0
+
+
+        10             <-- Depth = 0 | Height = 4
+       /  \
+      5    15          <-- Depth = 1 | Height = 3
+     /      \
+    2        20        <-- Depth = 2 | Height = 2
+           /
+         17            <-- Depth = 3 | Height = 1
+
+
+max Nodes = 2^(h) -1
+Height (h)	Max Nodes
+1	1
+2	3 = 2² - 1
+3	7 = 2³ - 1
+4	15 = 2⁴ - 1
+5	31 = 2⁵ - 1
+
+
+Type of Binary Tree
+1. Perfect
+Every level is fully filled, and all leaves are at the same depth ⇒ Perfect.
+      1
+     / \
+    2   3
+   / \ / \
+  4  5 6  7
+
+2. Complete
+Last level isn't full, but it's filled left to right ⇒ Complete.
+      1
+     / \
+    2   3
+   / \
+  4   5
+
+3. Skewed
+Skewed Tree → Every node has only one child.
+      1
+     / 
+    2   
+     \
+     5
+      \
+       6
+
+4. Balanced
+The height difference between the left and right subtrees of every node is at most 1.
+
+
+Tree Expressioon
+https://i.ytimg.com/vi/WLvU5EQVZqY/maxresdefault.jpg

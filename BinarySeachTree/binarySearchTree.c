@@ -107,6 +107,9 @@ node *delete(node *root, int value){
         }
 
          //Punya 2 anak    
+
+        //Predecessor = Left Sub Tree -> Right Most Child = The biggest value at the left sub tree
+        //Succesor = Right Sub Tree -> Left Mmost Child = THe smalles value at the right sub tree
          
         //Succesor 
         node *temp = findMin(root->right); //Succ
@@ -159,6 +162,18 @@ void postorder(node *root){
     
 }
 
+int countNodes(node *root){
+    if (!root) return 0;
+    return 1 + countNodes(root->left) + countNodes(root->right);   
+}
+
+int treeHeight(node *root){
+    if (!root) return 0;
+    int leftSub = treeHeight(root->left);
+    int rightSub = treeHeight(root->right);
+    return 1 + (leftSub > rightSub ? leftSub : rightSub);
+}
+
 int main(){
     node* root = NULL;
 
@@ -170,6 +185,9 @@ int main(){
     insert(root, 60);
     insert(root, 80);
     
+    printf("Total Nodes: %d\n", countNodes(root));
+    printf("Tree Height: %d\n", treeHeight(root));
+
     // Print inorder traversal
     printf("Inorder traversal: ");
     inorder(root);
