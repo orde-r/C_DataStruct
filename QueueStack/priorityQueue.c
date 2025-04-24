@@ -25,7 +25,7 @@ void displayQueue() {
 
 list *createNewNode(int priority,int value){
     list *newnode = calloc(1,sizeof(list));
-
+    
     newnode->priority = priority;
     newnode->value = value;
     newnode->next = NULL;
