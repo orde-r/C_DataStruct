@@ -106,20 +106,20 @@ node *delete(node *root, int value){
             return temp;
         }
 
-         //Punya 2 anak    
+            //Punya 2 anak    
 
-        //Predecessor = Left Sub Tree -> Right Most Child = The biggest value at the left sub tree
-        //Succesor = Right Sub Tree -> Left Mmost Child = THe smalles value at the right sub tree
-         
-        //Succesor 
-        node *temp = findMin(root->right); //Succ
-        root->value = temp->value;
-        root->right = delete(root->right, temp->value); //Succ
-        
-        //Predecessor
-        // node *temp = findMax(root->left); //Pre
-        // root->value = temp->value;
-        // root->left = delete(root->left, temp->value); //Pre
+            //Predecessor = Left Sub Tree -> Right Most Child = The biggest value at the left sub tree
+            //Succesor = Right Sub Tree -> Left Mmost Child = THe smalles value at the right sub tree
+                
+            //Succesor 
+            node *temp = findMin(root->right); //Succ
+            root->value = temp->value;
+            root->right = delete(root->right, temp->value); //Succ
+
+            //Predecessor
+            // node *temp = findMax(root->left); //Pre
+            // root->value = temp->value;
+            // root->left = delete(root->left, temp->value); //Pre
     }
     return root;
 }

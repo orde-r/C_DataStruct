@@ -83,7 +83,7 @@ node *balancing(node *root, int val){
         return rightRotate(root);
     }
     //Right left
-    if (balanceFactor < -1 && val < root->left->val)
+    if (balanceFactor < -1 && val < root->right->val)
     {
         root->right = rightRotate(root->right);
         return leftRotate(root);
@@ -95,7 +95,6 @@ node *insert(node *root, int val){
     if (!root) return createNode(val);;
     if (val > root->val) root->right = insert(root->right,val);
     else if (val < root->val) root->left = insert(root->left,val);
-    
     
     return balancing(root, val);
 }

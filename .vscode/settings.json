@@ -4,6 +4,7 @@
         "deque": "c",
         "vector": "c",
         "string_view": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "type_traits": "c"
     }
 }
