@@ -13,7 +13,7 @@ struct node
 
 node *createNode(int val){
     node *newnode = malloc(sizeof(node));
-    newnode->height = 0;
+    newnode->height = 1;
     newnode->value = val;
     newnode->left = NULL;
     newnode->right = NULL;
@@ -60,33 +60,7 @@ node *rightRotate(node *y){
 }
 
 node *balanceTree(node *root, int val){
-    root->height = 1 + getMax(getHeight(root->left), getHeight(root->right));
-
-    int balanceFactor = getBalanceFactor(root);
-
-    //Left Left -- Berat kiri putar kanan
-    if (balanceFactor > 1 && val < root->left->value)
-    {
-        return rightRotate(root);
-    }
-    //Right Right -- Berat kanan putar kiri
-    if (balanceFactor < -1 && val > root->right->value)
-    {
-        return leftRotate(root);
-    }
-    //Left Right
-    if (balanceFactor > 1 && val > root->left->value)
-    {
-        root->left = leftRotate(root->left);
-        return rightRotate(root);
-    }
-    //Right Left
-    if (balanceFactor < -1 && val < root->right->value)
-    {
-        root->right = rightRotate(root->right);
-        return leftRotate(root);
-    }
-    return root;
+    
 }
 
 node *findMin(node *root){
@@ -136,6 +110,31 @@ node *insertNode(node *root, int val){
         root->right = insertNode(root->right, val);
     }
     
+    root->height = 1 + getMax(getHeight(root->left), getHeight(root->right));
+    int balanceFactor = getBalanceFactor(root);
+
+    //Left Left -- Berat kiri putar kanan
+    if (balanceFactor > 1 && val < root->left->value)
+    {
+        return rightRotate(root);
+    }
+    //Right Right -- Berat kanan putar kiri
+    if (balanceFactor < -1 && val > root->right->value)
+    {
+        return leftRotate(root);
+    }
+    //Left Right
+    if (balanceFactor > 1 && val > root->left->value)
+    {
+        root->left = leftRotate(root->left);
+        return rightRotate(root);
+    }
+    //Right Left
+    if (balanceFactor < -1 && val < root->right->value)
+    {
+        root->right = rightRotate(root->right);
+        return leftRotate(root);
+    }
     return root;
 }
 
@@ -170,7 +169,38 @@ node *deleteNode(node *root, int val){
         root->value = temp->value;
         root->right = deleteNode(root->right, temp->value);
     }
-    return root;
+
+
+    if (root == NULL){
+		return root;
+	}
+	
+	// update height 
+	root->height = 1 + max(height(root->left), height(root->right));
+	
+	// balance factor
+	int balanceFactor = getBalanceFactor(root);
+	
+	// case 1: LL
+	if (balanceFactor > 1 && getBalanceFactor(root->left) >= 0){
+		return rightRotate(root);
+	}
+	// case 2: RR
+	if (balanceFactor < -1 && getBalanceFactor(root->right) <= 0){
+		return leftRotate(root);
+	}
+	// case 3: LR
+	if (balanceFactor > 1 && getBalanceFactor(root->left) < 0){
+		root->left = leftRotate(root->left);
+		return rightRotate(root);
+	}
+	// case 4: RL
+	if (balanceFactor < -1 && getBalanceFactor(root->right) > 0){
+		root->right = rightRotate(root->right);
+		return leftRotate(root);
+	}
+	
+	return root;
 }
 
 void inorder(node *root){
