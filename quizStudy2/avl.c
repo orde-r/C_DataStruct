@@ -42,8 +42,8 @@ node *leftRotate(node *y){
     x->left = y;
     y->right = t2;
 
-    y->height = 1+max(getHeight(y->left), getHeight(y->right));
-    x->height = 1 + max(getHeight(x->left), getHeight(x->right));
+    y->height = 1+getMax(getHeight(y->left), getHeight(y->right));
+    x->height = 1 + getMax(getHeight(x->left), getHeight(x->right));
     return x;
 }
 
@@ -54,8 +54,8 @@ node *rightRotate(node *y){
     x->right = y;
     y->left = t2;
 
-    y->height = 1+max(getHeight(y->left), getHeight(y->right));
-    x->height = 1 + max(getHeight(x->left), getHeight(x->right));
+    y->height = 1+getMax(getHeight(y->left), getHeight(y->right));
+    x->height = 1 + getMax(getHeight(x->left), getHeight(x->right));
     return x;
 }
 
@@ -176,7 +176,7 @@ node *deleteNode(node *root, int val){
 	}
 	
 	// update height 
-	root->height = 1 + max(height(root->left), height(root->right));
+	root->height = 1 + getMax(getHeight(root->left), getHeight(root->right));
 	
 	// balance factor
 	int balanceFactor = getBalanceFactor(root);
@@ -206,8 +206,8 @@ node *deleteNode(node *root, int val){
 void inorder(node *root){
     if (root)
     {
-        inorder(root->left);
         printf("%d ", root->value);
+        inorder(root->left);
         inorder(root->right);
     }
 }
@@ -215,13 +215,13 @@ void inorder(node *root){
 int main(){
 
     node* root = NULL;
-    root = createNode(50);
-    root = insertNode(root, 30);
-    root = insertNode(root, 20);
-    root = insertNode(root, 70);
-    root = insertNode(root, 40);
-    root = insertNode(root, 60);
-    root = insertNode(root, 90);
+    root = createNode(7);
+    root = insertNode(root, 8);
+    root = insertNode(root, 6);
+    root = insertNode(root, 5);
+    root = insertNode(root, 4);
+    root = insertNode(root, 2);
+    // root = insertNode(root, 90);
     inorder(root);
 
     return 0;
