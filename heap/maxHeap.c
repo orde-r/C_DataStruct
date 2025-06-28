@@ -55,7 +55,7 @@ void deleteMax(int arr[]){
     swap(&arr[root], &arr[size-1]);
     size--;
     
-    heapify(arr,root);
+    heapify(arr,root); 
 }
 
 void printArray(int arr[]){
